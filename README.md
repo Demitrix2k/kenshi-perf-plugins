@@ -42,4 +42,4 @@ Plugins poll `perfctl.ini` in the Kenshi folder four times a second. `python3 to
 
 ## Status
 
-Not released. Before a release: benchmark on a clean 1.0.65 install, choose a license, check RE_Kenshi's redistribution terms. No license file yet.
+Licensed under GPL-3.0 (see `LICENSE`), the same as RE_Kenshi. No binary release yet. Numbers above are from the author's modded install; a clean 1.0.65 install benchmark is still to do.
