@@ -4,6 +4,21 @@
 
 Targets Kenshi 1.0.65 (Steam) with RE_Kenshi. Each plugin checks its patch addresses against the exe and does nothing if they don't match.
 
+## Start here (Linux / Proton): the DXVK setting
+
+Set this Steam launch option first. It costs nothing and needs no plugin:
+
+```
+DXVK_CONFIG="d3d11.cachedDynamicResources = a" %command%
+```
+
+It makes DXVK keep Kenshi's dynamic buffers in host-cached memory, which removes slow read-backs in the UI (MyGUI). Measured effect:
+
+- MyGUI's share of the main thread roughly halved, from 12-20% to about 6%; the UI cost fell from about 3 ms to about 1.5 ms per frame.
+- In a heavy, UI-busy save (many name tags, large squad) a single before/after screenshot pair showed about 29 FPS -> 36 FPS with the UI on, and no change with the UI hidden. That one is **not a logged benchmark**.
+
+How it compares with the plugins, from the logged tests: ShadowThrottle (-2.7 to -4.0 ms) is the biggest single gain in the logs, and the other plugins give about 1 ms each. The DXVK setting is the cheapest gain and the biggest one in UI-heavy scenes, but not the biggest overall. It does nothing on Windows, where there is no DXVK; there the plugins are what you get.
+
 ## Plugins
 
 | Plugin | What it does | Measured (author's setup) |
